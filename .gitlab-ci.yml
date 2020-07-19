@@ -1,0 +1,32 @@
+# This sets up gitlab to auto build images in pipeline
+
+stages:
+  - build
+
+image:
+  name: tvories/packer-with-win-update
+  entrypoint: [""]
+
+deploy_ubuntu-20.04:
+  stage: build
+  script:
+    - echo "Building ubuntu 20.04"
+    - packer build -force --only vsphere-iso.ubuntu --var-file=20.04.pkrvars.hcl .
+
+deploy_ubuntu-18.04:
+  stage: build
+  script:
+    - echo "Building ubuntu 18.04"
+    - packer build -force --only vsphere-iso.ubuntu --var-file=18.04.pkrvars.hcl .
+
+deploy_windows-2019:
+  stage: build
+  script:
+    - echo "Building Windows 2019"
+    - packer build -force --only vsphere-iso.windows --var-file=2019.pkrvars.hcl .
+
+deploy_centos8:
+  stage: build
+  script:
+    - echo "Building Centos8"
+    - packer build -force --only vsphere-iso.centos --var-file=centos8.pkrvars.hcl .
