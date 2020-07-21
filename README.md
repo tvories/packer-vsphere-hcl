@@ -24,7 +24,7 @@ Note the trailing `.` at the end of the command.  That is telling packer to buil
 
 ## Directory Structure
 
-`boot_config` - Stores kickstart, answerfiles, and pressed files.
+`boot_config` - Stores kickstart, answerfiles, and preseed files.
 
 ```bash
 boot_config/
@@ -56,7 +56,7 @@ This is where the sources and builds are defined.  Every build is triggered from
 
 #### `vsphere.auto.pkrvars.hcl`
 
-These are variables that are loaded automatically (anything with a `.auto.pkrvars.hcl` will load automatically in the same direcotry) and are the same for every build.  This is where the vsphere variables are populated.
+These are variables that are loaded automatically (anything with a `.auto.pkrvars.hcl` will load automatically in the same directory) and are the same for every build.  This is where the vsphere variables are populated.
 
 #### `variables.pkr.hcl`
 
