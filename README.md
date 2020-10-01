@@ -50,21 +50,21 @@ These are named as to be targeted by the packer variables `os_family` and `os_ve
 
 ## Key files
 
-#### `vsphere.pkr.hcl`
+### `vsphere.pkr.hcl`
 
 This is where the sources and builds are defined.  Every build is triggered from this file.  It includes Ubuntu, Centos, and Windows sources and builds.
 
-#### `vsphere.auto.pkrvars.hcl`
+### `vsphere.auto.pkrvars.hcl`
 
 These are variables that are loaded automatically (anything with a `.auto.pkrvars.hcl` will load automatically in the same directory) and are the same for every build.  This is where the vsphere variables are populated.
 
-#### `variables.pkr.hcl`
+### `variables.pkr.hcl`
 
 This is where the hcl variables are declared.  You could potentially put this at the top of your `vsphere.pkr.hcl` file, but it's good practice to keep your variables files separate.
 
 There are some defaults defined in this file, but for the most part variables are declared in the individual OS variable files.
 
-#### Individual OS variable files
+### Individual OS variable files
 
 These files are specifically provided during the packer command to tell packer which build to process.  An example packer command would be: `packer build -force --only vsphere-iso.windows --var-file=2019.pkrvars.hcl .`
 
