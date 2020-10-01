@@ -27,7 +27,7 @@ source "vsphere-iso" "windows" {
   iso_checksum          = var.iso_checksum
   vm_name               = "server-${ var.os_version }-{{ isotime \"2006-01-02\" }}"
   guest_os_type         = var.guest_os_type
-  disk_controller_type  = "pvscsi" # Windows requires vmware tools drivers for pvscsi to work
+  disk_controller_type  = ["pvscsi"] # Windows requires vmware tools drivers for pvscsi to work
   network_adapters {
     # For windows, the vmware tools network drivers are required to be connected by floppy before tools is installed
     network = var.vm_network
@@ -75,7 +75,7 @@ source "vsphere-iso" "ubuntu" {
   iso_checksum          = var.iso_checksum
   vm_name               = "${ var.os_family }-${ var.os_version }-{{ isotime \"2006-01-02\" }}"
   guest_os_type         = var.guest_os_type
-  disk_controller_type  = "pvscsi"
+  disk_controller_type  = ["pvscsi"]
   network_adapters {
     network = var.vm_network
     network_card = var.nic_type
@@ -119,7 +119,7 @@ source "vsphere-iso" "centos" {
   iso_checksum          = var.iso_checksum
   vm_name               = "${ var.os_family }-${ var.os_version }-{{ isotime \"2006-01-02\" }}"
   guest_os_type         = var.guest_os_type
-  disk_controller_type  = "pvscsi"
+  disk_controller_type  = ["pvscsi"]
   network_adapters {
     network = var.vm_network
     network_card = var.nic_type

@@ -1,7 +1,7 @@
 # Packer with HCL and vsphere-iso
 
 This repo gives a few examples using the latest packer (v1.5.0+) and HCL.  HCL enables a lot of neat new abilities, but I couldn't find any examples for vsphere-iso or other non-cloud configurations.
-
+<!-- TODO: add requirements section -->
 ## Usage
 
 The `vsphere.pkr.hcl` file is the main packer configuration file.  You could break out each build into its own file (`ubuntu.pkr.hcl`, `centos.pkr.hcl`, etc) but I wanted to reuse as much code as I could during this process.
@@ -69,3 +69,9 @@ There are some defaults defined in this file, but for the most part variables ar
 These files are specifically provided during the packer command to tell packer which build to process.  An example packer command would be: `packer build -force --only vsphere-iso.windows --var-file=2019.pkrvars.hcl .`
 
 Note the trailing period in that command.  That is telling packer to build everything in the directory, which is required to get the `auto.pkrvars.hcl` to work correctly.  Note in that command the `--only` flag.  That tells packer to only build the `vsphere-iso.windows` source.
+
+## Using in Docker
+
+I maintain the [packer-with-win-update](https://github.com/tvories/packer-with-win-update) docker container.  You can run this code in docker with the following syntax:
+
+`docker run --rm tvories/packer-with-win-update build --only vsphere-iso.windows --var-file=2019.pkrvars.hcl .`

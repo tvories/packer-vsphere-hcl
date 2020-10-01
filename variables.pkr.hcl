@@ -28,7 +28,9 @@ variable "iso_checksum" {}
 variable "os_version" {}
 variable "os_iso_path" {}
 variable "guest_os_type" {}
-variable "root_disk_size" {}
+variable "root_disk_size" {
+    default = 48000
+}
 variable "nic_type" {
     default = "vmxnet3"
 }
