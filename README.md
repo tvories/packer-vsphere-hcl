@@ -74,4 +74,4 @@ Note the trailing period in that command.  That is telling packer to build every
 
 I maintain the [packer-with-win-update](https://github.com/tvories/packer-with-win-update) docker container.  You can run this code in docker with the following syntax:
 
-`docker run --rm tvories/packer-with-win-update build --only vsphere-iso.windows --var-file=2019.pkrvars.hcl .`
+`docker run --rm -v $(pwd):/data --workdir /data tvories/packer-with-win-update build --only vsphere-iso.windows --var-file=2019.pkrvars.hcl .`
