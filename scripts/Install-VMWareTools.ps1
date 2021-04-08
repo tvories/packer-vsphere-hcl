@@ -7,7 +7,11 @@ if([int]$wmi_operatingsystem.version.Substring(0,1) -le 6) { # Server 2008
     $url = 'https://packages.vmware.com/tools/releases/10.2.5/windows/x64/VMware-tools-10.2.5-8068406-x86_64.exe'
 } else { # Anything above 2008
     Write-Verbose "Latest Tools selected (not 2008R2)"
-    $url = 'https://packages.vmware.com/tools/releases/latest/windows/x64/VMware-tools-11.1.0-16036546-x86_64.exe'
+
+    $content = Invoke-WebRequest -Uri "https://packages.vmware.com/tools/releases/latest/windows/x64/"
+    $version = ($content.Links | Where-Object {$_.href -like "VMware-tools*" }).href
+
+    $url = "https://packages.vmware.com/tools/releases/latest/windows/x64/$($version)"
 }
 
 # install vmware tools
