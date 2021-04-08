@@ -21,7 +21,7 @@ $timeout = 30 # Timeout in minutes for it to fail this job
 $wc = New-Object System.Net.WebClient
 $wc.DownloadFile($url,$path)
 $args = '/s /v /qn reboot=r'
-Write-Verbose "Tools download successful.  Install starting."
+Write-Verbose "Tools download successful. Install starting."
 $timer = [Diagnostics.Stopwatch]::StartNew()
 Start-Process -FilePath $path -ArgumentList $args -PassThru
 
@@ -41,7 +41,7 @@ $toolswait = $true
 While ($toolswait){
     if(!(Test-VMInstall)){
         if($timer.Elaspsed.TotalMinutes -gt $timeout) {
-            Write-Verbose "Tools not detected within timeout.  Failing job."
+            Write-Verbose "Tools not detected within timeout. Failing job."
             Exit 1
         }
         Write-Verbose "Tools not detected yet."
