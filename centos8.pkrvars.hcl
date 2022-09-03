@@ -8,5 +8,5 @@ root_disk_size = 24000
 connection_username = "vagrant"
 connection_password = "vagrant"
 boot_command = [
-  "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos8-ks.cfg<enter><wait>"
+  "<tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos8-ks.cfg<enter><wait>"
 ]
